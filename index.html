@@ -3,1010 +3,1188 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>La Ville Rose — Salon de thé à Toulouse</title>
-  <meta name="description" content="La Ville Rose — salon de thé à Toulouse. Brunch, pâtisseries, thés du monde, milkshakes & smoothies. Commandes personnalisées." />
+  <title>La Ville Rose — salon de thé à Toulouse</title>
+  <meta name="description" content="Salon de thé rose & rétro à Toulouse. Brunch, thés du monde, smoothies, milkshakes et commandes personnalisées." />
 
-  <!-- Favicon (dérivé du logo fourni) -->
-  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAACXBIWXMAAAsSAAALEgHS3X78AAAgAElEQVR4nO2de3BU1b3HP7uZQ8vK8sQhQpKkSg0qYQwQqfWqg1o3nV9x5mM1m6h2m2+u3u7u9y7m3m3m2bO8bJQm2gRrS7YpQFJgqJQWmGQhQhC5cQF7pJQmQZQ8vP+e8w2c8x0cE9+9+zv3r3v+8yZ5zvn+Z7n3u8QAAAABJRU5ErkJggg==" />
-
-  <!-- Typographies : élégante + bold "déjanté" -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --pink:#f7a9c5;
-      --pink2:#ff7fb8;
-      --pink3:#ff4fa3;
-      --roseDeep:#a81d5b;
+      --bg:#fff7f6;
+      --paper:#fffdfc;
+      --ink:#1f141a;
+      --muted:#6d5b63;
+      --rose:#f5b9c9;
+      --hot:#ff3f9b;
+      --gold:#c7a36a;
+      --line:rgba(31,20,26,.12);
+      --shadow:0 14px 46px rgba(20,10,16,.12);
+      --shadow-soft:0 10px 28px rgba(20,10,16,.08);
+      --r:22px;
+      --r2:32px;
+      --max:1180px;
 
-      --paper:#fff7f3;
-      --cream:#fff3f7;
-      --ink:#1d0f17;
-      --muted:rgba(29,15,23,.70);
-      --line:rgba(29,15,23,.12);
-
-      --card:#ffffff;
-      --shadow: 0 18px 55px rgba(29,15,23,.12);
-      --shadow2: 0 10px 24px rgba(29,15,23,.10);
-
-      --serif:"Cormorant Garamond", serif;
-      --sans:"DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      --fun:"Fredoka", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-
-      --r:18px;
-      --r2:28px;
-      --max:1120px;
+      /* “Poster” palette */
+      --poster-cream:#fff2e9;
+      --poster-pink:#ffc7dd;
+      --poster-red:#d23a57;
+      --poster-ink:#1d0f16;
+      --poster-blue:#2a6fdb;
     }
 
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
       color:var(--ink);
-      font-family:var(--sans);
       background:
-        radial-gradient(900px 700px at 20% 10%, rgba(255,79,163,.18), transparent 55%),
-        radial-gradient(900px 700px at 85% 15%, rgba(255,127,184,.18), transparent 58%),
-        radial-gradient(900px 700px at 50% 100%, rgba(247,169,197,.25), transparent 62%),
-        var(--paper);
+        radial-gradient(1100px 700px at 15% 10%, rgba(245,185,201,.30), transparent 60%),
+        radial-gradient(900px 600px at 85% 5%, rgba(255,63,155,.10), transparent 58%),
+        radial-gradient(1000px 800px at 60% 95%, rgba(199,163,106,.10), transparent 60%),
+        var(--bg);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height:1.45;
       overflow-x:hidden;
     }
     a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .skip{position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden}
+    .skip:focus{left:12px;top:12px;width:auto;height:auto;background:#fff;padding:10px 12px;border-radius:14px;box-shadow:var(--shadow)}
 
-    /* =========================
-       HEADER (moins SaaS : plus "maison")
-       ========================= */
-    header{
+    /* Top header */
+    .topbar{
       position:sticky; top:0; z-index:50;
-      background: rgba(255,247,243,.78);
-      backdrop-filter: blur(14px);
+      backdrop-filter:saturate(1.4) blur(12px);
+      background: rgba(255, 247, 246, .82);
       border-bottom:1px solid var(--line);
     }
-    .top{
+    .nav{
       display:flex; align-items:center; justify-content:space-between;
-      gap:14px;
-      padding: 12px 0;
+      gap:14px; padding:12px 0;
     }
     .brand{
       display:flex; align-items:center; gap:12px;
       text-decoration:none;
       min-width:240px;
     }
-    .brand img{
-      height:44px; width:auto;
-      border-radius: 12px;
-      box-shadow: 0 10px 20px rgba(255,79,163,.18);
-    }
-    .brand .t{
-      line-height:1.05;
-    }
-    .brand .t b{
-      display:block;
-      font-family: var(--serif);
-      font-size: 18px;
-      letter-spacing: .2px;
-    }
-    .brand .t small{
-      display:block;
-      color: var(--muted);
-      margin-top:2px;
-      font-size: 12px;
-    }
-    nav{
-      display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:flex-end;
-    }
-    nav a{
-      text-decoration:none;
-      font-size:14px;
-      padding: 10px 12px;
-      border-radius:999px;
-      border:1px solid transparent;
-      transition:.18s ease;
-      color: rgba(29,15,23,.80);
-    }
-    nav a:hover{
-      border-color: rgba(255,79,163,.22);
-      background: rgba(255,255,255,.55);
-      color: var(--roseDeep);
-    }
-    .ig{
-      text-decoration:none;
-      display:inline-flex; align-items:center; gap:10px;
-      padding: 10px 14px;
-      border-radius:999px;
-      border: 1px solid rgba(255,79,163,.28);
-      background: linear-gradient(135deg, rgba(255,79,163,.16), rgba(247,169,197,.18));
-      box-shadow: 0 12px 26px rgba(255,79,163,.14);
-      font-weight: 800;
-    }
-    .ig .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: var(--pink3);
-      box-shadow: 0 0 14px rgba(255,79,163,.50);
-    }
-    @media (max-width: 880px){
-      nav a{display:none}
-    }
-
-    /* =========================
-       HERO (éditorial, pas "product")
-       ========================= */
-    main{padding: 18px 0 12px;}
-    .hero{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 14px;
-      align-items: stretch;
-    }
-    @media (max-width: 900px){ .hero{grid-template-columns:1fr;} }
-
-    .card{
-      background: rgba(255,255,255,.78);
-      border:1px solid rgba(29,15,23,.10);
-      border-radius: var(--r2);
-      box-shadow: var(--shadow);
+    .mark{
+      width:44px; height:44px; border-radius:16px;
+      background: linear-gradient(145deg, rgba(245,185,201,.80), rgba(255,255,255,.92));
+      border:1px solid rgba(31,20,26,.10);
+      box-shadow: 0 10px 26px rgba(20,10,16,.10);
+      display:grid; place-items:center;
       overflow:hidden;
     }
-    .heroTxt{padding: 22px 22px 18px;}
-    .kicker{
-      display:flex; align-items:center; gap:10px;
-      font-family: var(--serif);
-      color: rgba(29,15,23,.75);
-      letter-spacing:.2px;
-      font-size: 15px;
+    .brand h1{
+      margin:0;
+      font-family:"Libre Baskerville", serif;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:14px;
+      line-height:1.05;
     }
-    .kicker .line{height:1px; width:46px; background: rgba(29,15,23,.22);}
-    h1{
-      margin: 10px 0 10px;
-      font-family: var(--serif);
-      font-size: clamp(40px, 5.2vw, 64px);
-      line-height: 1.02;
-      letter-spacing: -0.6px;
+    .brand small{
+      display:block; margin-top:3px;
+      font-family: Inter, sans-serif;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.02em;
     }
-    h1 em{
-      font-style:normal;
-      color: var(--roseDeep);
-      position:relative;
-    }
-    h1 em:after{
-      content:"";
-      position:absolute;
-      left:-3px; right:-3px; bottom:6px;
-      height:12px;
-      background: rgba(255,127,184,.28);
-      z-index:-1;
-      border-radius: 10px;
-      transform: rotate(-1deg);
-    }
-    .lead{
-      margin: 0 0 14px;
-      color: rgba(29,15,23,.78);
-      line-height: 1.6;
-      font-size: 16px;
-      max-width: 62ch;
-    }
-
-    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px;}
-    .btn{
+    .links{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .links a{
       text-decoration:none;
-      display:inline-flex; align-items:center; gap:10px;
-      padding: 12px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,79,163,.28);
-      background: rgba(255,255,255,.65);
-      font-weight: 800;
-      transition:.18s ease;
-      box-shadow: 0 12px 24px rgba(29,15,23,.10);
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(31,20,26,.10);
+      background: rgba(255,255,255,.60);
+      box-shadow: 0 6px 18px rgba(20,10,16,.06);
+      font-weight:900;
+      font-size:13px;
+      color: rgba(31,20,26,.90);
+      transition: transform .15s ease, background .15s ease;
     }
-    .btn:hover{transform: translateY(-1px); box-shadow: 0 18px 32px rgba(29,15,23,.12);}
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(255,79,163,.20), rgba(247,169,197,.22));
-    }
-    .btn .dot{
-      width:9px; height:9px; border-radius:999px; background: var(--pink3);
-      box-shadow: 0 0 16px rgba(255,79,163,.55);
+    .links a:hover{transform: translateY(-1px); background: rgba(255,255,255,.82)}
+    .links a.primary{
+      background: linear-gradient(180deg, rgba(245,185,201,.98), rgba(245,185,201,.60));
+      border-color: rgba(255,63,155,.22);
     }
 
-    /* Hero visuel : photo vraie (mur / façade) */
-    .heroPic{
+    .burger{display:none; width:44px;height:44px;border-radius:14px;border:1px solid rgba(31,20,26,.10);background:rgba(255,255,255,.60);box-shadow:0 6px 18px rgba(20,10,16,.06); place-items:center}
+    .burger span{display:block;width:18px;height:2px;background:rgba(31,20,26,.75);border-radius:2px; position:relative}
+    .burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:rgba(31,20,26,.75);border-radius:2px}
+    .burger span::before{top:-6px}
+    .burger span::after{top:6px}
+
+    /* HERO (fix readability + clickable links) */
+    .hero{
       position:relative;
-      min-height: 350px;
-      background: center/cover no-repeat;
+      min-height: 76vh;
+      display:grid;
+      align-items:end;
+      overflow:hidden;
+      border-bottom:1px solid rgba(31,20,26,.08);
+      isolation:isolate;
     }
-    .heroPic:after{
+    .hero::before{
       content:"";
       position:absolute; inset:0;
       background:
-        linear-gradient(180deg, rgba(29,15,23,.08), rgba(29,15,23,.10)),
-        radial-gradient(500px 300px at 30% 25%, rgba(255,255,255,.35), transparent 60%);
+        url("./assets/hero-roses-neon.jpg");
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.02);
+      filter:saturate(1.06) contrast(1.02);
+      z-index:0;
     }
-    .heroNote{
-      position:absolute; left:16px; right:16px; bottom:16px;
-      background: rgba(255,255,255,.82);
-      border: 1px solid rgba(255,255,255,.85);
-      backdrop-filter: blur(14px);
-      border-radius: 22px;
-      padding: 12px 14px;
-      box-shadow: 0 18px 36px rgba(29,15,23,.12);
-    }
-    .heroNote b{
-      display:block;
-      font-family: var(--serif);
-      font-size: 16px;
-      margin-bottom:2px;
-    }
-    .heroNote small{color: rgba(29,15,23,.68);}
-
-    /* =========================
-       SECTIONS
-       ========================= */
-    section{padding: 14px 0;}
-    .head{
-      display:flex; justify-content:space-between; align-items:flex-end;
-      gap: 12px;
-      margin: 8px 0 12px;
-    }
-    .head h2{
-      margin:0;
-      font-family: var(--serif);
-      font-size: 30px;
-      letter-spacing: -.3px;
-    }
-    .head p{margin:0; color: var(--muted); max-width: 64ch; line-height:1.45}
-
-    /* =========================
-       POSTERS "déjantés" (vibe insta)
-       ========================= */
-    .posterWall{
-      background: rgba(255,255,255,.76);
-      border:1px solid rgba(29,15,23,.10);
-      border-radius: var(--r2);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .posterTop{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      padding: 18px 18px 10px;
-      background:
-        linear-gradient(90deg, rgba(255,127,184,.20), rgba(247,169,197,.15), rgba(255,255,255,.0));
-      border-bottom: 1px solid rgba(29,15,23,.08);
-    }
-    .posterTop b{
-      font-family: var(--fun);
-      font-size: 16px;
-      letter-spacing:.2px;
-    }
-    .posterGrid{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      padding: 14px;
-    }
-    @media (max-width: 980px){ .posterGrid{grid-template-columns: repeat(2, 1fr);} }
-
-    .poster{
-      border-radius: 24px;
-      border:1px solid rgba(29,15,23,.10);
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-      min-height: 180px;
-      padding: 14px;
-      position:relative;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-    .poster .tag{
-      font-family: var(--fun);
-      font-size: 12px;
-      letter-spacing:.4px;
-      opacity:.85;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-    }
-    .poster .tag:before{
+    /* Stronger dark overlay so text is readable (no more white-on-white) */
+    .hero::after{
       content:"";
-      width:8px; height:8px; border-radius:999px;
-      background: rgba(29,15,23,.25);
-    }
-    .poster .big{
-      margin: 6px 0 8px;
-      line-height: 1.02;
-      letter-spacing: -.2px;
-    }
-    .poster .big.fun{
-      font-family: var(--fun);
-      font-weight: 700;
-      font-size: 26px;
-      text-transform: uppercase;
-      letter-spacing:.8px;
-    }
-    .poster .big.serif{
-      font-family: var(--serif);
-      font-weight: 700;
-      font-size: 30px;
-      text-transform: none;
-      letter-spacing:-.3px;
-    }
-    .poster .small{
-      font-size: 13px;
-      color: rgba(29,15,23,.72);
-      line-height: 1.35;
-    }
-    .sticker{
-      position:absolute; right:12px; top:12px;
-      padding: 8px 10px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.60);
-      border:1px solid rgba(29,15,23,.10);
-      font-family: var(--fun);
-      font-size: 12px;
-      box-shadow: 0 10px 20px rgba(29,15,23,.10);
-      transform: rotate(2deg);
-    }
-    .pA{background: linear-gradient(135deg, rgba(255,127,184,.35), rgba(255,255,255,.72));}
-    .pB{background: linear-gradient(135deg, rgba(215,244,235,.95), rgba(255,255,255,.76));}
-    .pC{background: linear-gradient(135deg, rgba(255,236,180,.92), rgba(255,255,255,.76));}
-    .pD{background: linear-gradient(135deg, rgba(232,216,255,.95), rgba(255,255,255,.76));}
-
-    /* =========================
-       MENU : on montre les visuels + on transcrit proprement
-       ========================= */
-    .menuGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    @media (max-width: 980px){ .menuGrid{grid-template-columns:1fr;} }
-
-    .menuCard{
-      background: rgba(255,255,255,.78);
-      border:1px solid rgba(29,15,23,.10);
-      border-radius: var(--r2);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .menuCard .img{
-      height: 320px;
-      background: center/contain no-repeat #fff;
-      border-bottom:1px solid rgba(29,15,23,.08);
-    }
-    .menuCard .body{padding: 16px 16px 18px;}
-    .menuCard h3{
-      margin:0 0 8px;
-      font-family: var(--serif);
-      font-size: 22px;
-    }
-
-    .cols{
-      display:grid; grid-template-columns: 1fr 1fr; gap: 10px;
-    }
-    @media (max-width: 520px){ .cols{grid-template-columns:1fr;} }
-
-    .list{
-      margin:0; padding:0;
-      list-style:none;
-      display:grid; gap:8px;
-    }
-    .list li{
-      padding: 10px 12px;
-      border-radius: 18px;
-      border:1px solid rgba(29,15,23,.10);
-      background: rgba(255,255,255,.74);
-    }
-    .list b{
-      display:flex; justify-content:space-between; gap:10px;
-      font-size: 14px;
-    }
-    .list small{display:block; color: rgba(29,15,23,.70); margin-top:3px; line-height:1.35}
-
-    /* Thé du monde */
-    .teaNote{
-      margin: 10px 0 0;
-      padding: 10px 12px;
-      border-radius: 18px;
-      border:1px dashed rgba(29,15,23,.18);
-      background: rgba(255,127,184,.10);
-      color: rgba(29,15,23,.76);
-      font-size: 13px;
-      line-height:1.4;
-    }
-
-    /* =========================
-       COMMANDES PERSONNALISÉES : look “story”
-       ========================= */
-    .customWrap{
-      background: linear-gradient(180deg, rgba(247,169,197,.60), rgba(247,169,197,.25));
-      border:1px solid rgba(29,15,23,.10);
-      border-radius: var(--r2);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .customHead{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding: 18px;
+      position:absolute; inset:0;
       background:
-        radial-gradient(600px 220px at 20% 20%, rgba(255,255,255,.55), transparent 60%),
-        radial-gradient(600px 220px at 80% 30%, rgba(255,255,255,.35), transparent 60%);
-      border-bottom:1px solid rgba(29,15,23,.08);
+        radial-gradient(900px 520px at 18% 22%, rgba(255,255,255,.25), transparent 58%),
+        radial-gradient(900px 520px at 72% 18%, rgba(255,63,155,.22), transparent 65%),
+        linear-gradient(180deg, rgba(15,8,12,.72) 0%, rgba(15,8,12,.40) 40%, rgba(255,247,246,.88) 100%);
+      z-index:1;
     }
-    .customHead h2{
+
+    /* Retro poster strip inside hero (brings the vibe back) */
+    .posterStrip{
+      position:absolute;
+      inset: 16px 0 auto 0;
+      z-index:2;
+      pointer-events:none;
+    }
+    .posterRow{
+      display:grid;
+      grid-template-columns: 1.25fr .95fr .85fr;
+      gap: 10px;
+      align-items:stretch;
+      pointer-events:none;
+    }
+    .poster{
+      pointer-events:none;
+      border-radius: 22px;
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow: 0 18px 60px rgba(0,0,0,.25);
+      padding: 12px 12px 10px;
+      overflow:hidden;
+      background:
+        radial-gradient(700px 240px at 10% 0%, rgba(255,255,255,.34), transparent 55%),
+        rgba(255,255,255,.08);
+      backdrop-filter: blur(12px) saturate(1.1);
+      position:relative;
+    }
+    .poster::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.14), transparent 40%, rgba(255,255,255,.10)),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.05), rgba(255,255,255,.05) 1px, transparent 1px, transparent 4px);
+      opacity:.8;
+      mix-blend-mode: overlay;
+      pointer-events:none;
+    }
+    .poster h3{
       margin:0;
-      font-family: var(--fun);
-      font-size: 22px;
-      letter-spacing:.2px;
+      font-family:"Libre Baskerville", serif;
+      color: rgba(255,255,255,.92);
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      font-size: 12px;
+    }
+    .poster p{
+      margin:7px 0 0;
+      color: rgba(255,255,255,.80);
+      font-weight:700;
+      font-size: 12px;
+      line-height:1.35;
+      max-width: 46ch;
+      text-shadow: 0 10px 22px rgba(0,0,0,.25);
+    }
+    .poster b{color:#fff}
+    .poster .stamp{
+      position:absolute; right:10px; bottom:10px;
+      width:46px; height:46px; border-radius: 16px;
+      background: rgba(255,63,155,.18);
+      border:1px solid rgba(255,255,255,.18);
+      display:grid; place-items:center;
+      color: rgba(255,255,255,.88);
+      font-weight:900;
+      box-shadow: 0 12px 30px rgba(0,0,0,.20);
+      transform: rotate(-6deg);
+    }
+
+    .heroInner{position:relative; z-index:3; padding: 120px 0 42px;}
+    .heroCard{
+      width:min(860px, 100%);
+      border-radius: var(--r2);
+      border:1px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.14);
+      box-shadow: 0 30px 90px rgba(0,0,0,.30);
+      backdrop-filter: blur(16px) saturate(1.15);
+      padding: 22px 22px;
+      overflow:hidden;
+    }
+    .kicker{
+      display:flex; align-items:center; gap:10px;
+      color: rgba(255,255,255,.88);
+      font-weight:900;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      font-size:12px;
+      text-shadow: 0 10px 22px rgba(0,0,0,.35);
+    }
+    .dot{width:8px;height:8px;border-radius:99px;background:var(--hot);box-shadow:0 0 0 7px rgba(255,63,155,.22)}
+
+    .neon{
+      margin: 12px 0 10px;
+      font-family:"Libre Baskerville", serif;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-weight:700;
+      font-size: clamp(28px, 4.4vw, 46px);
+      color: #ffe9f3;
+      text-shadow:
+        0 0 10px rgba(255,63,155,.70),
+        0 0 24px rgba(255,63,155,.46),
+        0 0 46px rgba(255,63,155,.28),
+        0 18px 60px rgba(0,0,0,.35);
+    }
+    .subtitle{
+      margin:0 0 14px;
+      font-family:"Playfair Display", serif;
+      font-weight:600;
+      font-size: clamp(22px, 3.2vw, 32px);
+      line-height:1.08;
+      color:#fff;
+      text-shadow: 0 12px 30px rgba(0,0,0,.35);
+    }
+    .lead{
+      margin:0;
+      color: rgba(255,255,255,.88);
+      max-width: 70ch;
+      font-size: 15px;
+      line-height:1.65;
+      text-shadow: 0 10px 22px rgba(0,0,0,.35);
+    }
+    .ctaRow{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top: 16px;
+      position:relative;
+      z-index:5; /* ensure clickable */
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:12px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.22);
+      text-decoration:none;
+      background: rgba(255,255,255,.12);
+      color:#fff;
+      font-weight:900;
+      box-shadow: 0 18px 46px rgba(0,0,0,.22);
+      transition: transform .15s ease, background .15s ease;
+      cursor:pointer;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.18)}
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(245,185,201,.92), rgba(245,185,201,.34));
+      border-color: rgba(255,63,155,.35);
+      color: #2a121c;
+      box-shadow: 0 18px 46px rgba(255,63,155,.18);
+    }
+    .btn .mini{width:10px;height:10px;border-radius:99px;background:var(--hot)}
+    .heroMeta{
+      margin-top: 14px;
+      display:flex; gap:10px; flex-wrap:wrap;
+      color: rgba(255,255,255,.88);
+      font-weight:900;
+      font-size:12px;
+      letter-spacing:.03em;
+      position:relative; z-index:4;
     }
     .pill{
       display:inline-flex; align-items:center; gap:8px;
-      padding: 10px 12px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.62);
-      border:1px solid rgba(29,15,23,.10);
-      font-family: var(--fun);
-      box-shadow: 0 12px 22px rgba(29,15,23,.10);
-    }
-    .pill .i{
-      width:26px; height:26px; border-radius: 10px;
-      display:grid; place-items:center;
-      background: rgba(255,79,163,.18);
-      border:1px solid rgba(255,79,163,.20);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.20);
+      backdrop-filter: blur(10px);
     }
 
-    .storyGrid{
+    /* Sections */
+    section{padding: 34px 0}
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:14px; flex-wrap:wrap;
+      margin-bottom: 14px;
+    }
+    .sectionHead h2{
+      margin:0;
+      font-family:"Playfair Display", serif;
+      font-weight:600;
+      font-size: 30px;
+      letter-spacing:-.01em;
+    }
+    .sectionHead p{margin:0;color:rgba(31,20,26,.68);max-width:78ch}
+
+    /* Highlights */
+    .highlights{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap:12px;
+      margin-top: 14px;
+    }
+    .hl{
+      border-radius: 22px;
+      border:1px solid rgba(31,20,26,.10);
+      background: rgba(255,255,255,.70);
+      box-shadow: var(--shadow-soft);
       padding: 14px;
-    }
-    @media (max-width: 980px){ .storyGrid{grid-template-columns: 1fr;} }
-    .story{
-      border-radius: 28px;
-      border: 1px solid rgba(29,15,23,.10);
-      box-shadow: var(--shadow2);
+      position:relative;
       overflow:hidden;
-      background: rgba(255,255,255,.65);
+      min-height: 116px;
     }
-    .story .simg{
-      height: 520px;
-      background: center/cover no-repeat;
+    .hl::before{
+      content:"";
+      position:absolute; inset:-30px -40px auto auto;
+      width:150px;height:150px;border-radius: 40px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,63,155,.22), transparent 60%),
+        radial-gradient(circle at 60% 70%, rgba(245,185,201,.55), transparent 55%),
+        radial-gradient(circle at 20% 80%, rgba(199,163,106,.18), transparent 60%);
+      transform: rotate(14deg);
+      opacity:.95;
     }
-    @media (max-width: 980px){ .story .simg{height: 520px;} }
-    .story .cap{
-      padding: 12px 14px;
-      background: rgba(255,255,255,.78);
-      border-top:1px solid rgba(29,15,23,.08);
-    }
-    .cap b{font-family: var(--serif); font-size: 16px;}
-    .cap small{display:block; color: rgba(29,15,23,.68); margin-top:4px; line-height:1.4}
+    .hl b{display:block;font-weight:900}
+    .hl span{display:block;margin-top:6px;color:rgba(31,20,26,.72);font-size:13px;line-height:1.55}
 
-    /* =========================
-       GALERIE (photos lieu)
-       ========================= */
-    .gallery{
+    /* MENU (fix big blanks -> 3 columns on desktop) */
+    .menuWrap{
       display:grid;
-      grid-template-columns: 1.2fr .8fr .8fr;
-      grid-template-rows: 220px 220px;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 14px;
+      align-items:start;
+    }
+    .menuCard{
+      border-radius: var(--r);
+      border:1px solid rgba(31,20,26,.10);
+      background: rgba(255,255,255,.70);
+      box-shadow: var(--shadow-soft);
+      overflow:hidden;
+    }
+    .menuTop{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; padding: 14px;
+      border-bottom: 1px solid rgba(31,20,26,.08);
+      background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.60));
+    }
+    .tabs{display:flex; gap:8px; flex-wrap:wrap}
+    .tab{
+      border:1px solid rgba(31,20,26,.10);
+      background: rgba(255,247,246,.60);
+      padding: 9px 11px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 12px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .tab[aria-selected="true"]{
+      background: rgba(245,185,201,.62);
+      border-color: rgba(255,63,155,.22);
+    }
+    .search{flex:1; display:flex; justify-content:flex-end}
+    .search input{
+      width: min(340px, 100%);
+      border-radius: 999px;
+      border:1px solid rgba(31,20,26,.10);
+      padding: 10px 12px;
+      background: rgba(255,255,255,.90);
+      outline:none;
+      font-weight:700;
+    }
+    .panel{padding:14px; display:none}
+    .panel.active{display:block}
+
+    .menuGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr; /* 3 columns = less blank space */
+      gap: 12px;
+      align-items:start;
+    }
+    .group{
+      border-radius: 22px;
+      border: 1px solid rgba(31,20,26,.10);
+      background: rgba(255,255,255,.62);
+      padding: 12px;
+    }
+    .group.wide{grid-column: span 2;}
+    .group h3{
+      margin:0 0 8px;
+      font-family:"Libre Baskerville", serif;
+      font-size: 16px;
+      letter-spacing:.02em;
+    }
+    .item{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:10px;
+      padding: 8px 0;
+      border-top: 1px dashed rgba(31,20,26,.12);
+    }
+    .item:first-of-type{border-top:none}
+    .name{font-weight:900}
+    .desc{
+      grid-column:1 / -1;
+      color: rgba(31,20,26,.66);
+      font-size:12px;
+      margin-top:2px;
+      line-height:1.5;
+    }
+    .price{font-weight:900; white-space:nowrap; color: rgba(31,20,26,.82)}
+
+    .menuSide{display:grid; gap:12px;}
+    .sideCard{
+      border-radius: var(--r);
+      border:1px solid rgba(31,20,26,.10);
+      background: rgba(255,255,255,.66);
+      box-shadow: var(--shadow-soft);
+      overflow:hidden;
+    }
+    .sidePhoto{
+      height: 220px;
+      background-size: cover;
+      background-position:center;
+      filter: saturate(1.08) contrast(1.02);
+    }
+    .sideBody{padding:12px; color:rgba(31,20,26,.72); font-size:13px; line-height:1.55}
+    .sideActions{display:flex; gap:10px; flex-wrap:wrap; padding: 0 12px 12px}
+    .sideActions button{
+      cursor:pointer;
+      border-radius: 999px;
+      border:1px solid rgba(31,20,26,.10);
+      background: rgba(255,247,246,.62);
+      padding: 10px 12px;
+      font-weight: 900;
+      font-size: 12px;
+    }
+
+    /* Orders */
+    .orders{
+      border-radius: var(--r2);
+      border:1px solid rgba(31,20,26,.10);
+      background:
+        radial-gradient(900px 520px at 10% 20%, rgba(245,185,201,.32), transparent 60%),
+        rgba(255,255,255,.66);
+      box-shadow: var(--shadow-soft);
+      overflow:hidden;
+    }
+    .ordersTop{
+      padding: 18px 18px 0;
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+    .ordersTop h3{
+      margin:0;
+      font-family:"Playfair Display", serif;
+      font-size: 26px;
+    }
+    .ordersTop p{margin:0;color:rgba(31,20,26,.72);max-width:78ch}
+    .ordersGrid{
+      padding: 16px 18px 18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items:start;
+    }
+    .steps{display:grid; gap:10px}
+    .step{
+      border-radius: 22px;
+      border: 1px solid rgba(31,20,26,.10);
+      background: rgba(255,255,255,.70);
+      padding: 12px;
+      box-shadow: 0 10px 24px rgba(20,10,16,.06);
+    }
+    .step strong{
+      display:inline-block;
+      font-weight: 900;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(245,185,201,.52);
+      border: 1px solid rgba(255,63,155,.18);
+      margin-bottom: 8px;
+    }
+    .step p{margin:0;color:rgba(31,20,26,.74);font-size:13px;line-height:1.55}
+    .ordersPics{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
-    @media (max-width: 980px){
-      .gallery{grid-template-columns:1fr; grid-template-rows: repeat(5, 190px);}
-    }
-    .shot{
+    .pic{
       border-radius: 26px;
-      border:1px solid rgba(29,15,23,.10);
-      box-shadow: var(--shadow2);
+      border:1px solid rgba(31,20,26,.10);
+      background: rgba(255,255,255,.62);
+      box-shadow: 0 12px 36px rgba(20,10,16,.10);
       overflow:hidden;
-      background: center/cover no-repeat;
-      position:relative;
+      cursor: zoom-in;
+      min-height: 220px;
     }
-    .shot.big{grid-row: 1 / span 2;}
-    @media (max-width: 980px){ .shot.big{grid-row:auto;} }
+    .pic img{width:100%; height:100%; object-fit:cover; display:block}
 
-    .shot .label{
-      position:absolute; left:14px; right:14px; bottom:14px;
-      padding: 12px 14px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.78);
-      border:1px solid rgba(255,255,255,.85);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 18px 34px rgba(29,15,23,.12);
-    }
-    .shot .label b{font-family: var(--serif); font-size: 16px;}
-    .shot .label small{display:block; color: rgba(29,15,23,.68); margin-top:2px;}
-
-    /* =========================
-       INFOS
-       ========================= */
-    .info{
+    /* Photos */
+    .gallery{
       display:grid;
-      grid-template-columns: .95fr 1.05fr;
+      grid-template-columns: 1.2fr .8fr;
       gap: 14px;
-      background: rgba(255,255,255,.78);
-      border:1px solid rgba(29,15,23,.10);
+      align-items:start;
+    }
+    .bigPhoto{
       border-radius: var(--r2);
+      border:1px solid rgba(31,20,26,.10);
       box-shadow: var(--shadow);
       overflow:hidden;
+      cursor:zoom-in;
+      background: rgba(255,255,255,.62);
+      min-height: 420px;
     }
-    @media (max-width: 980px){ .info{grid-template-columns:1fr;} }
-    .info .left{padding: 16px;}
-    .kv{
-      list-style:none; margin:0; padding:0;
-      display:grid; gap:10px;
+    .bigPhoto img{width:100%;height:100%;object-fit:cover;display:block}
+    .thumbs{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
-    .kv li{
-      display:flex; gap:12px; align-items:flex-start;
-      padding: 12px;
-      border-radius: 18px;
-      border:1px solid rgba(29,15,23,.10);
-      background: rgba(255,255,255,.75);
+    .thumb{
+      border-radius: 26px;
+      border:1px solid rgba(31,20,26,.10);
+      box-shadow: var(--shadow-soft);
+      overflow:hidden;
+      cursor:zoom-in;
+      background: rgba(255,255,255,.62);
+      height: 200px;
     }
-    .ico{
-      width:42px; height:42px; border-radius: 16px;
-      display:grid; place-items:center;
-      background: rgba(255,127,184,.18);
-      border:1px solid rgba(255,79,163,.18);
-      flex:0 0 auto;
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+
+    /* Infos + map (fix broken map by using “place” embed) */
+    .infoGrid{display:grid; grid-template-columns: 1fr 1fr; gap:14px; align-items:start}
+    .infoCard{
+      border-radius: var(--r);
+      border:1px solid rgba(31,20,26,.10);
+      background: rgba(255,255,255,.70);
+      box-shadow: var(--shadow-soft);
+      padding: 14px;
     }
-    .kv b{display:block; font-family: var(--serif);}
-    .kv span{display:block; color: rgba(29,15,23,.74); margin-top:2px; line-height:1.35}
-    iframe{width:100%; height:100%; min-height: 360px; border:0}
+    .infoCard h3{margin:0 0 10px;font-family:"Libre Baskerville", serif;font-size:16px}
+    .infoCard ul{margin:0;padding-left:18px;color:rgba(31,20,26,.74)}
+    .map{
+      border-radius: var(--r);
+      border:1px solid rgba(31,20,26,.10);
+      overflow:hidden;
+      box-shadow: var(--shadow-soft);
+      background: rgba(255,255,255,.62);
+      min-height: 280px;
+    }
+    iframe{border:0}
 
     footer{
-      padding: 18px 0 30px;
-      color: rgba(29,15,23,.62);
-      font-size: 13px;
+      margin-top: 26px;
+      padding: 24px 0 36px;
+      border-top: 1px solid rgba(31,20,26,.10);
+      color: rgba(31,20,26,.70);
+    }
+    .foot{display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap}
+
+    /* Lightbox */
+    .lightbox{
+      position:fixed; inset:0;
+      background: rgba(15,8,12,.78);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index: 999;
+      padding: 18px;
+    }
+    .lightbox.open{display:flex}
+    .lightbox .frame{
+      max-width: min(980px, 96vw);
+      max-height: 88vh;
+      border-radius: 26px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.20);
+      box-shadow: 0 30px 90px rgba(0,0,0,.45);
+      background: rgba(255,255,255,.06);
+      position:relative;
+    }
+    .lightbox img{
+      width:100%; height:100%;
+      object-fit:contain;
+      display:block;
+      background: rgba(0,0,0,.18);
+    }
+    .lightbox button{
+      position:absolute; top:10px; right:10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.12);
+      color:#fff;
+      padding: 10px 12px;
+      font-weight: 900;
+      cursor:pointer;
     }
 
-    /* Reveal */
-    .reveal{opacity:0; transform: translateY(10px); transition: .55s ease;}
-    .reveal.on{opacity:1; transform:none;}
+    @media (max-width: 980px){
+      .links{display:none}
+      .burger{display:grid}
+      .highlights{grid-template-columns:1fr 1fr}
+      .menuWrap{grid-template-columns:1fr}
+      .menuGrid{grid-template-columns:1fr 1fr}
+      .gallery{grid-template-columns:1fr}
+      .infoGrid{grid-template-columns:1fr}
+      .ordersGrid{grid-template-columns:1fr}
+      .heroInner{padding: 120px 0 28px}
+      .posterRow{grid-template-columns:1fr; gap:10px}
+      .posterStrip{inset: 10px 0 auto 0;}
+    }
+    @media (max-width: 520px){
+      .highlights{grid-template-columns:1fr}
+      .menuGrid{grid-template-columns:1fr}
+      .thumbs{grid-template-columns:1fr}
+    }
   </style>
 </head>
 
 <body>
-<header>
-  <div class="wrap">
-    <div class="top">
-      <a class="brand" href="#top" aria-label="La Ville Rose">
-        <!-- LOGO (image fournie) -->
-        <img alt="Logo La Ville Rose" src="{{LOGO_WEBP}}" />
-        <div class="t">
-          <b>La Ville Rose</b>
-          <small>salon de thé • Toulouse</small>
-        </div>
-      </a>
+  <a class="skip" href="#contenu">Aller au contenu</a>
 
-      <nav>
-        <a href="#esprit">L’esprit</a>
-        <a href="#menu">Menu</a>
-        <a href="#commandes">Commandes perso</a>
-        <a href="#galerie">Photos</a>
-        <a href="#infos">Infos</a>
-        <a class="ig" href="https://www.instagram.com/lavillerosecafe/" target="_blank" rel="noreferrer">
-          <span class="dot" aria-hidden="true"></span>Instagram
+  <header class="topbar">
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="La Ville Rose — accueil">
+          <div class="mark" aria-hidden="true">
+            <!-- Simple original “capitole vibe” mark (not copying the real logo) -->
+            <svg width="34" height="34" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 26h48" stroke="rgba(31,20,26,.75)" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M16 26l16-10 16 10" stroke="rgba(31,20,26,.72)" stroke-width="2.2" stroke-linejoin="round"/>
+              <path d="M12 26v24m40-24v24" stroke="rgba(31,20,26,.55)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M18 50V34m8 16V34m12 16V34m8 16V34" stroke="rgba(31,20,26,.45)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M8 50h48" stroke="rgba(31,20,26,.75)" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="32" cy="32" r="1.6" fill="rgba(255,63,155,.95)"/>
+            </svg>
+          </div>
+          <div>
+            <h1>LA VILLE ROSE <small>salon de thé • Toulouse</small></h1>
+          </div>
         </a>
-      </nav>
+
+        <nav class="links" aria-label="Navigation">
+          <a href="#esprit">L’esprit</a>
+          <a href="#menu">Menu</a>
+          <a href="#commandes">Commandes perso</a>
+          <a href="#photos">Photos</a>
+          <a href="#infos">Infos</a>
+          <a class="primary" href="https://www.instagram.com/lavillerosecafe?igsh=eWJucXYzczlubms3" target="_blank" rel="noreferrer">Instagram</a>
+        </nav>
+
+        <button class="burger" id="burger" aria-label="Ouvrir le menu"><span></span></button>
+      </div>
     </div>
-  </div>
-</header>
 
-<main id="top">
-  <div class="wrap">
+    <div id="mobileNav" style="display:none;border-top:1px solid rgba(31,20,26,.10);">
+      <div class="wrap" style="padding: 12px 0 14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn" href="#esprit">L’esprit</a>
+        <a class="btn" href="#menu">Menu</a>
+        <a class="btn" href="#commandes">Commandes perso</a>
+        <a class="btn" href="#photos">Photos</a>
+        <a class="btn" href="#infos">Infos</a>
+        <a class="btn primary" href="https://www.instagram.com/lavillerosecafe?igsh=eWJucXYzczlubms3" target="_blank" rel="noreferrer"><span class="mini"></span> Instagram</a>
+      </div>
+    </div>
+  </header>
 
-    <!-- HERO -->
-    <div class="hero">
-      <div class="card heroTxt reveal">
-        <div class="kicker"><span class="line" aria-hidden="true"></span> Toulouse • Gare Matabiau</div>
-        <h1>Un salon de thé <em>en rose</em>, pour prendre le temps.</h1>
+  <div id="top" class="hero" role="banner" aria-label="Hero La Ville Rose">
+    <div class="posterStrip">
+      <div class="wrap">
+        <div class="posterRow">
+          <div class="poster">
+            <h3>Affiches “pastel pop”</h3>
+            <p>Un comptoir <b>rose + rétro</b> avec des visuels “poster” (pas une vitrine produit).</p>
+            <div class="stamp">POP</div>
+          </div>
+          <div class="poster">
+            <h3>Brunch & gourmandises</h3>
+            <p>Salé (burrata, saumon…) + doux (pancakes, fruits).</p>
+            <div class="stamp">YUM</div>
+          </div>
+          <div class="poster">
+            <h3>Boissons</h3>
+            <p>Milkshakes, smoothies, mocktails & “fait maison”.</p>
+            <div class="stamp">SIP</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap heroInner">
+      <div class="heroCard">
+        <div class="kicker"><span class="dot"></span> Toulouse • salon de thé</div>
+        <div class="neon">LA VILLE ROSE</div>
+        <div class="subtitle">Un salon de thé en rose, pour prendre le temps.</div>
         <p class="lead">
-          Décor fleuri, affiches pastel, douceurs généreuses & thés du monde :
-          <b>La Ville Rose</b> c’est une pause sucrée, jolie, et un peu décalée — comme leurs posters derrière le comptoir.
+          Mur de roses + néon, affiches pastel pop derrière le comptoir.
+          Brunch, desserts gourmands, boissons réconfort — et une vraie vibe “tea house”.
         </p>
 
+        <!-- LINKS NOW WORK (previously blocked by overlay/pointer-events) -->
         <div class="ctaRow">
-          <a class="btn primary" href="#infos"><span class="dot" aria-hidden="true"></span>Nous trouver</a>
-          <a class="btn" href="#menu">Voir le menu</a>
-          <a class="btn" href="#commandes">Commandes personnalisées</a>
+          <a class="btn primary" href="#menu"><span class="mini"></span> Voir le menu</a>
+          <a class="btn" href="#photos">Voir les photos</a>
+          <a class="btn" href="#infos">Nous trouver</a>
+          <a class="btn" href="#commandes">Commande personnalisée</a>
         </div>
-      </div>
 
-      <div class="card heroPic reveal" style="background-image:url('{{FACADE_WEBP}}')">
-        <div class="heroNote">
-          <b>Le spot rose (vraiment).</b>
-          <small>Façade fleurie, ambiance cocon — et photos qui font plaisir.</small>
+        <div class="heroMeta" aria-label="Infos rapides">
+          <span class="pill">🌸 Rose + rétro + moderne</span>
+          <span class="pill">🥞 Brunch jusqu’à 15h</span>
+          <span class="pill">🍵 Thés du monde</span>
+          <span class="pill">🎂 Cakes sur commande</span>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- ESPRIT / POSTERS -->
+  <main id="contenu">
     <section id="esprit">
-      <div class="head">
-        <div>
-          <h2>L’esprit “La Ville Rose”</h2>
-          <p>On assume le côté <b>rose + rétro + moderne + un peu déjanté</b> (comme leurs stories et leurs affiches).</p>
-        </div>
-      </div>
-
-      <div class="posterWall reveal">
-        <div class="posterTop">
-          <b>POSTERS WALL — version web</b>
-          <span style="color:rgba(29,15,23,.65); font-size:13px;">Aplats • typos bold • vibes insta</span>
-        </div>
-
-        <div class="posterGrid">
-          <div class="poster pA">
-            <div class="sticker">✨ Insta-friendly</div>
-            <div class="tag">LA VILLE ROSE</div>
-            <div class="big fun">MORE AMOR</div>
-            <div class="small">por favor 💗</div>
-          </div>
-
-          <div class="poster pB">
-            <div class="sticker">☕ Tea time</div>
-            <div class="tag">SALON DE THÉ</div>
-            <div class="big serif">Stay a little.</div>
-            <div class="small">Un thé, une douceur… et on respire.</div>
-          </div>
-
-          <div class="poster pC">
-            <div class="sticker">🥞 Brunch</div>
-            <div class="tag">AUJOURD’HUI</div>
-            <div class="big fun">CIAO</div>
-            <div class="small">bella ✿</div>
-          </div>
-
-          <div class="poster pD">
-            <div class="sticker">🍰 Sweet</div>
-            <div class="tag">GOURMAND</div>
-            <div class="big serif">Treat yourself</div>
-            <div class="small">Ici, c’est oui. (Toujours.)</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- MENU -->
-    <section id="menu">
-      <div class="head">
-        <div>
-          <h2>Le menu</h2>
-          <p>Transcription propre + affichage des visuels (comme sur Insta).</p>
-        </div>
-      </div>
-
-      <div class="menuGrid">
-
-        <!-- BOISSONS : Softs / Smoothies / Milkshakes -->
-        <div class="menuCard reveal">
-          <div class="img" style="background-image:url('{{MENU_BOISSONS_WEBP}}');"></div>
-          <div class="body">
-            <h3>Boissons (Softs • Smoothies • Milkshakes)</h3>
-
-            <div class="cols">
-              <ul class="list">
-                <li>
-                  <b><span>Coca-Cola (33cl)</span><span>5€</span></b>
-                  <small>Coca-Cola / sans sucres / Cherry</small>
-                </li>
-                <li><b><span>Fanta (25cl)</span><span>5€</span></b></li>
-                <li><b><span>Sprite (25cl)</span><span>5€</span></b></li>
-                <li>
-                  <b><span>Fuzetea (25cl)</span><span>5€</span></b>
-                  <small>Thé pêche / menthe citron vert</small>
-                </li>
-                <li><b><span>Tropico (25cl)</span><span>5€</span></b></li>
-                <li>
-                  <b><span>Minute Maid (25cl)</span><span>4,50€</span></b>
-                  <small>Orange / Pomme / Multifruit / Ananas / Tomate</small>
-                </li>
-                <li><b><span>Orangina (25cl)</span><span>5€</span></b></li>
-                <li><b><span>Eau plate (33cl)</span><span>3€</span></b></li>
-                <li><b><span>Voss (37cl)</span><span>5€</span></b></li>
-                <li><b><span>Perrier (33cl)</span><span>5€</span></b></li>
-                <li><b><span>San Pellegrino (50cl)</span><span>6€</span></b></li>
-                <li><b><span>Supplément sirop</span><span>1€</span></b></li>
-              </ul>
-
-              <ul class="list">
-                <li>
-                  <b><span>Smoothies (44cl)</span><span>7€</span></b>
-                  <small>Fraise banane • Pomme framboise • Mangue myrtille • Ananas coco • Ananas mangue papaye • Mangue carotte kiwi • Banane goyave • Banane chou • Mangue citronnelle</small>
-                </li>
-                <li>
-                  <b><span>Milkshakes (44cl)</span><span>8€</span></b>
-                  <small>Avocado • Nutella / Kinder Bueno • Oreo • Lotus Biskoff • Vanille</small>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- THÉ DU MONDE -->
-        <div class="menuCard reveal">
-          <div class="img" style="background-image:url('{{MENU_THE_WEBP}}');"></div>
-          <div class="body">
-            <h3>Thé du monde</h3>
-            <div class="teaNote"><b>Tarif unique :</b> tous nos thés sont au tarif de <b>5€</b>.</div>
-
-            <div style="height:10px"></div>
-
-            <div class="cols">
-              <ul class="list">
-                <li>
-                  <b><span>Thé NOIR</span><span></span></b>
-                  <small>
-                    1. Earl Grey Yin Zhen N°0<br>
-                    2. Agrumes N°142<br>
-                    3. Myrtille, Châtaigne N°643<br>
-                    4. Paul & Virginie N°11<br>
-                    5. Jardin Bleu N°3<br>
-                    6. Strong Breakfast N°6<br>
-                    7. My Tiramisu N°658<br>
-                    8. Rose N°202<br>
-                    9. Mon petit chocolat N°532<br>
-                    10. Thé des 1000 collines N°364<br>
-                    11. Granola d’été N°533 (Oolong)<br>
-                    12. Citron-Caviar Rose N°527<br>
-                    13. Banana pancake
-                  </small>
-                </li>
-              </ul>
-
-              <ul class="list">
-                <li>
-                  <b><span>Thé VERT</span><span></span></b>
-                  <small>
-                    1. Bali N°315<br>
-                    2. Volupté N°231<br>
-                    3. Nuit à Versailles N°277<br>
-                    4. Minty Tea N°665<br>
-                    5. Miss Dammann N°477<br>
-                    6. Calabria N°59<br>
-                    7. Soleil Vert 16<br>
-                    8. 1 2 3, je m’en vais aux bois !
-                  </small>
-                </li>
-              </ul>
-            </div>
-
-            <div class="teaNote" style="margin-top:12px">
-              (Sur la version finale, on peut ajouter : <b>filtres</b> (noir/vert/infusions), <b>allergènes</b>, et une <b>carte PDF</b> imprimable.)
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- COMMANDES PERSONNALISÉES -->
-    <section id="commandes">
-      <div class="customWrap reveal">
-        <div class="customHead">
+      <div class="wrap">
+        <div class="sectionHead">
           <div>
-            <h2>🎂 Commandes personnalisées</h2>
-            <div style="color:rgba(29,15,23,.72); margin-top:6px; line-height:1.35">
-              Une section à part (comme leurs stories) : <b>Number Cake</b>, <b>Bento cake</b>, <b>Donut Birthday Cake</b>…
-            </div>
-          </div>
-          <div class="pill"><span class="i">📩</span>Commandez via Instagram</div>
-        </div>
-
-        <div class="storyGrid">
-          <div class="story">
-            <div class="simg" style="background-image:url('{{STORY_INFO_WEBP}}')"></div>
-            <div class="cap">
-              <b>Infos commandes</b>
-              <small>Tout est cadré “story” : simple, clair, rose.</small>
-            </div>
-          </div>
-
-          <div class="story">
-            <div class="simg" style="background-image:url('{{STORY_STEPS_WEBP}}')"></div>
-            <div class="cap">
-              <b>Étapes & organisation</b>
-              <small>Contact minimum 1 semaine avant + infos (parts/personnes).</small>
-            </div>
-          </div>
-
-          <div class="story">
-            <div class="simg" style="background-image:url('{{STORY_NUMBERCAKE_WEBP}}')"></div>
-            <div class="cap">
-              <b>Number Cake</b>
-              <small>À partir de <b>80€</b> (selon options).</small>
-            </div>
-          </div>
-
-          <div class="story">
-            <div class="simg" style="background-image:url('{{STORY_BENTO_WEBP}}')"></div>
-            <div class="cap">
-              <b>Bento cake</b>
-              <small>À partir de <b>37€</b> (selon options).</small>
-            </div>
-          </div>
-
-          <div class="story">
-            <div class="simg" style="background-image:url('{{STORY_DONUT_WEBP}}')"></div>
-            <div class="cap">
-              <b>Donut Birthday Cake</b>
-              <small>À partir de <b>35€</b> (selon options).</small>
-            </div>
-          </div>
-
-          <div class="story">
-            <div class="simg" style="background-image:url('{{STORY_GENOISE_WEBP}}')"></div>
-            <div class="cap">
-              <b>Choix génoise</b>
-              <small>Orange • Red velvet • Vanille • Chocolat • (pavot…)</small>
-            </div>
+            <h2>L’esprit “La Ville Rose”</h2>
+            <p>Un lieu chaleureux et photogénique, pensé pour s’asseoir, discuter, goûter — et revenir.</p>
           </div>
         </div>
 
-        <div style="padding: 0 14px 14px;">
-          <a class="btn primary" href="https://www.instagram.com/lavillerosecafe/" target="_blank" rel="noreferrer">
-            <span class="dot" aria-hidden="true"></span>Envoyer un message sur Instagram
-          </a>
+        <div class="highlights" aria-label="Points forts">
+          <div class="hl"><b>🌸 Décor</b><span>Mur de roses + néon, détails vintage, pastel pop derrière le comptoir.</span></div>
+          <div class="hl"><b>🥞 Brunch</b><span>Salé gourmand (burrata, bagel saumon…) + douceur (pancakes, fruits…).</span></div>
+          <div class="hl"><b>🧋 Boissons</b><span>Milkshakes, smoothies, mocktails sans alcool, boissons “fait maison”.</span></div>
+          <div class="hl"><b>🎂 Sur commande</b><span>Number cake, bento cake, birthday cakes… style “story Insta”.</span></div>
         </div>
       </div>
     </section>
 
-    <!-- GALERIE -->
-    <section id="galerie">
-      <div class="head">
-        <div>
-          <h2>Photos</h2>
-          <p>Les visuels du lieu (ambiance rose, néon, comptoir, déco).</p>
+    <section id="menu">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2>Menu</h2>
+            <p>Plus étalé (3 colonnes), moins de vides, et toujours avec onglets + recherche.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="gallery">
-        <div class="shot big reveal" style="background-image:url('{{WALL_NEON_WEBP}}')">
-          <div class="label"><b>Mur “La Ville en Rose”</b><small>Le spot signature</small></div>
-        </div>
-        <div class="shot reveal" style="background-image:url('{{PHONE_WEBP}}')">
-          <div class="label"><b>Détails déco</b><small>Rétro, rose, fun</small></div>
-        </div>
-        <div class="shot reveal" style="background-image:url('{{COUNTER_WEBP}}')">
-          <div class="label"><b>Comptoir & posters</b><small>Vibe pastel</small></div>
-        </div>
-        <div class="shot reveal" style="background-image:url('{{LOGO_FLOWERS_WEBP}}')">
-          <div class="label"><b>Mur de fleurs</b><small>Néon + roses</small></div>
-        </div>
-        <div class="shot reveal" style="background-image:url('{{FACADE_WEBP}}')">
-          <div class="label"><b>Façade</b><small>Fleurie & rose</small></div>
+        <div class="menuWrap">
+          <div class="menuCard" aria-label="Menu">
+            <div class="menuTop">
+              <div class="tabs" role="tablist" aria-label="Catégories du menu">
+                <div class="tab" role="tab" tabindex="0" aria-selected="true" data-tab="brunch">Brunch & salé</div>
+                <div class="tab" role="tab" tabindex="-1" aria-selected="false" data-tab="boissons">Boissons</div>
+                <div class="tab" role="tab" tabindex="-1" aria-selected="false" data-tab="the">Thés</div>
+                <div class="tab" role="tab" tabindex="-1" aria-selected="false" data-tab="cafe">Café & infusions</div>
+              </div>
+              <div class="search">
+                <input id="menuSearch" type="search" placeholder="Rechercher (ex: burrata, oreo…)" aria-label="Rechercher dans le menu" />
+              </div>
+            </div>
+
+            <!-- BRUNCH -->
+            <div class="panel active" data-panel="brunch">
+              <div class="menuGrid">
+                <div class="group" data-group>
+                  <h3>Brunch</h3>
+                  <div class="item" data-item>
+                    <div class="name">Brunch — 25€</div>
+                    <div class="price">25€</div>
+                    <div class="desc">Jusqu’à 15h • Plat + boisson + dessert</div>
+                  </div>
+                </div>
+
+                <div class="group wide" data-group>
+                  <h3>Plats</h3>
+                  <div class="item" data-item><div><div class="name">Eggs muffins bacon</div><div class="desc">Œuf Bénédicte, bacon de dinde, cheddar, tomate, ciboulette.</div></div><div class="price">13€</div></div>
+                  <div class="item" data-item><div><div class="name">Avocado toast</div><div class="desc">Crème burrata, saumon fumé, avocado, œuf, tomates cerises.</div></div><div class="price">13€</div></div>
+                  <div class="item" data-item><div><div class="name">Wrap au poulet</div><div class="desc">Tortillas de blé, poulet crispy, salade, concombre, tomate.</div></div><div class="price">13,50€</div></div>
+                  <div class="item" data-item><div><div class="name">Focaccia — tomate mozza</div><div class="desc">Tomate, mozzarella, sauce pesto, basilic.</div></div><div class="price">12€</div></div>
+                  <div class="item" data-item><div><div class="name">Bruschetta petite burrata</div><div class="desc">Burrata 125g, olives, échalote, tomates cerises, huile de truffe, pain toasté.</div></div><div class="price">14€</div></div>
+                  <div class="item" data-item><div><div class="name">Bagel au saumon</div><div class="desc">Avocat, saumon fumé, oignon, sauce tartare, feta.</div></div><div class="price">13€</div></div>
+                  <div class="item" data-item><div><div class="name">Pinky burger</div><div class="desc">Poulet crispy, double cheddar, sauce cheddar, cornichon, tomate, oignon rouge.</div></div><div class="price">15€</div></div>
+                  <div class="item" data-item><div><div class="name">Burrata (300g)</div><div class="desc">Tomate, tomates cerises, pesto, basilic, vinaigre à la framboise.</div></div><div class="price">16€</div></div>
+                  <div class="item" data-item><div><div class="name">Bao bun</div><div class="desc">Salade, poulet crispy, graines de sésame, tomate, sauce taco épicée.</div></div><div class="price">13€</div></div>
+                </div>
+
+                <div class="group" data-group>
+                  <h3>À partager</h3>
+                  <div class="item" data-item><div class="name">Pancakes x8</div><div class="price">9€</div><div class="desc">Lotus / Nutella / sirop d’érable / miel</div></div>
+                  <div class="item" data-item><div class="name">Plateau de fruits</div><div class="price">10€</div></div>
+                </div>
+
+                <div class="group" data-group>
+                  <h3>Mocktails (sans alcool)</h3>
+                  <div class="item" data-item><div><div class="name">Mojito (fraise / passion)</div><div class="desc">Jus de pomme, sirop rhum, citron vert, menthe fraîche.</div></div><div class="price">8€</div></div>
+                  <div class="item" data-item><div><div class="name">Piña colada</div><div class="desc">Jus d’ananas, noix de coco, sirop rhum, jus de citron vert.</div></div><div class="price">8€</div></div>
+                  <div class="item" data-item><div><div class="name">Instagramable</div><div class="desc">Sirop violette, limonade, jus de citron vert, curaçao bleu.</div></div><div class="price">8€</div></div>
+                  <div class="item" data-item><div><div class="name">Sex on the beach</div><div class="desc">Jus d’orange, jus de cranberry, sirop de pêche, sirop de grenadine.</div></div><div class="price">8€</div></div>
+                  <div class="item" data-item><div><div class="name">Bora-bora</div><div class="desc">Jus d’ananas, fruit de la passion, jus de citron vert, sirop de grenadine.</div></div><div class="price">8€</div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BOISSONS -->
+            <div class="panel" data-panel="boissons">
+              <div class="menuGrid">
+                <div class="group wide" data-group>
+                  <h3>Soft</h3>
+                  <div class="item" data-item><div class="name">Coca-Cola (33cl)</div><div class="price">4€</div></div>
+                  <div class="item" data-item><div class="name">Coca-Cola Cherry (33cl)</div><div class="price">4€</div></div>
+                  <div class="item" data-item><div class="name">Coca-Cola Zero (33cl)</div><div class="price">4€</div></div>
+                  <div class="item" data-item><div class="name">Coca-Cola Framboise (33cl)</div><div class="price">5€</div></div>
+                  <div class="item" data-item><div class="name">Sprite (25cl)</div><div class="price">4€</div></div>
+                  <div class="item" data-item><div class="name">Fanta (25cl)</div><div class="price">4€</div></div>
+                  <div class="item" data-item><div class="name">FuzeTea (25cl)</div><div class="price">4€</div></div>
+                  <div class="item" data-item><div class="name">Minute Maid Orange (25cl)</div><div class="price">4€</div></div>
+                  <div class="item" data-item><div class="name">Minute Maid Pomme (25cl)</div><div class="price">4€</div></div>
+                  <div class="item" data-item><div class="name">Minute Maid Ananas (25cl)</div><div class="price">4€</div></div>
+                  <div class="item" data-item><div class="name">Evian (33cl)</div><div class="price">4€</div></div>
+                  <div class="item" data-item><div class="name">Perrier (33cl)</div><div class="price">4€</div></div>
+                  <div class="item" data-item><div class="name">Supplément sirop</div><div class="price">1€</div></div>
+                </div>
+
+                <div class="group" data-group>
+                  <h3>Fait maison</h3>
+                  <div class="item" data-item><div class="name">Thé glacé (35cl)</div><div class="price">7€</div><div class="desc">Fraise / Framboise / Passion / Cerise / Ananas / Banane</div></div>
+                  <div class="item" data-item><div class="name">Jus d’orange pressé</div><div class="price">5,50€</div></div>
+                  <div class="item" data-item><div class="name">Citronnade</div><div class="price">5,50€</div></div>
+                </div>
+
+                <div class="group" data-group>
+                  <h3>Smoothies (44cl)</h3>
+                  <div class="item" data-item><div class="name">Fraise banane</div><div class="price">7€</div></div>
+                  <div class="item" data-item><div class="name">Pomme framboise • mangue myrtille</div><div class="price">7€</div></div>
+                  <div class="item" data-item><div class="name">Ananas coco</div><div class="price">7€</div></div>
+                  <div class="item" data-item><div class="name">Ananas mangue papaye</div><div class="price">7€</div></div>
+                  <div class="item" data-item><div class="name">Mangue carotte kiwi • banane goyave</div><div class="price">7€</div></div>
+                  <div class="item" data-item><div class="name">Banane chou • mangue citronnelle</div><div class="price">7€</div></div>
+                </div>
+
+                <div class="group" data-group>
+                  <h3>Milkshakes (44cl)</h3>
+                  <div class="item" data-item><div class="name">Avocado</div><div class="price">8€</div></div>
+                  <div class="item" data-item><div class="name">Nutella® • Kinder Bueno</div><div class="price">8€</div></div>
+                  <div class="item" data-item><div class="name">Oreo</div><div class="price">8€</div></div>
+                  <div class="item" data-item><div class="name">Lotus Biskoff</div><div class="price">8€</div></div>
+                  <div class="item" data-item><div class="name">Vanille</div><div class="price">8€</div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- THÉ -->
+            <div class="panel" data-panel="the">
+              <div class="menuGrid">
+                <div class="group wide" data-group>
+                  <h3>Thé du monde</h3>
+                  <div class="item" data-item><div class="name">Tous les thés</div><div class="price">5€</div><div class="desc">Tarif unique</div></div>
+                </div>
+                <div class="group" data-group>
+                  <h3>Conseil</h3>
+                  <div class="item" data-item><div class="name">Fruité / floral / épicé</div><div class="price">—</div><div class="desc">Dis-nous ton mood, on t’oriente.</div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CAFÉ -->
+            <div class="panel" data-panel="cafe">
+              <div class="menuGrid">
+                <div class="group" data-group>
+                  <h3>Café</h3>
+                  <div class="item" data-item><div class="name">Ristretto</div><div class="price">2€</div></div>
+                  <div class="item" data-item><div class="name">Espresso</div><div class="price">2,50€</div></div>
+                  <div class="item" data-item><div class="name">Café Américain</div><div class="price">2,50€</div></div>
+                  <div class="item" data-item><div class="name">Noisette</div><div class="price">2,50€</div></div>
+                  <div class="item" data-item><div class="name">Café au lait</div><div class="price">3,50€</div></div>
+                  <div class="item" data-item><div class="name">Cappuccino</div><div class="price">4,50€</div></div>
+                  <div class="item" data-item><div class="name">Latte Macchiato</div><div class="price">4,50€</div><div class="desc">Espresso, lait chaud & mousse de lait.</div></div>
+                  <div class="item" data-item><div class="name">Café Viennois</div><div class="price">5€</div><div class="desc">Double chantilly + cacao.</div></div>
+                </div>
+
+                <div class="group" data-group>
+                  <h3>Infusions</h3>
+                  <div class="item" data-item><div class="name">Camomille</div><div class="price">—</div></div>
+                  <div class="item" data-item><div class="name">Rooibos (sélection)</div><div class="price">—</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="menuSide">
+            <div class="sideCard">
+              <div class="sidePhoto" style="background-image:url('./assets/interior-posters.jpg');"></div>
+              <div class="sideBody"><b>Ambiance</b> : roses + néon + affiches pastel “pop” derrière le comptoir.</div>
+              <div class="sideActions">
+                <button type="button" class="openDoc" data-src="./assets/menu-photo.jpg" data-title="Menu (photo)">Voir photo “menu”</button>
+                <button type="button" class="openDoc" data-src="./assets/teas-photo.jpg" data-title="Thés (photo)">Voir photo “thés”</button>
+              </div>
+            </div>
+
+            <div class="sideCard">
+              <div class="sidePhoto" style="background-image:url('./assets/vintage-detail.jpg');"></div>
+              <div class="sideBody"><b>Détails</b> : petit côté vintage (comme sur leurs stories).</div>
+              <div class="sideActions">
+                <button type="button" class="openDoc" data-src="./assets/hero-roses-neon.jpg" data-title="Néon & roses">Zoom néon</button>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
 
-    <!-- INFOS -->
+    <section id="commandes">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2>Commandes personnalisées</h2>
+            <p>Pour les anniversaires, surprises, événements — le style “story Insta” assumé.</p>
+          </div>
+        </div>
+
+        <div class="orders">
+          <div class="ordersTop">
+            <div>
+              <h3>Gâteaux sur mesure (Number • Bento • Birthday…)</h3>
+              <p>Contact idéalement <b>au moins une semaine avant</b>. Clique sur une image pour zoom.</p>
+            </div>
+            <a class="btn primary" href="https://www.instagram.com/lavillerosecafe?igsh=eWJucXYzczlubms3" target="_blank" rel="noreferrer"><span class="mini"></span> DM Instagram</a>
+          </div>
+
+          <div class="ordersGrid">
+            <div class="steps">
+              <div class="step"><strong>1. Contact</strong><p>Écris en DM avec la date souhaitée.</p></div>
+              <div class="step"><strong>2. Détails</strong><p>Nombre de parts / personnes + thème + message.</p></div>
+              <div class="step"><strong>3. Choix</strong><p>Parfums / finitions (fruits, chocolat…).</p></div>
+              <div class="step"><strong>4. Validation</strong><p>Validation + timing de retrait.</p></div>
+            </div>
+
+            <div class="ordersPics" aria-label="Exemples commandes personnalisées">
+              <div class="pic" data-zoom="./assets/cake-1.jpg" aria-label="Exemple number cake"><img alt="Exemple number cake" src="./assets/cake-1.jpg" /></div>
+              <div class="pic" data-zoom="./assets/cake-2.jpg" aria-label="Exemple bento cake"><img alt="Exemple bento cake" src="./assets/cake-2.jpg" /></div>
+              <div class="pic" data-zoom="./assets/cake-3.jpg" aria-label="Exemple donut birthday cake"><img alt="Exemple donut birthday cake" src="./assets/cake-3.jpg" /></div>
+              <div class="pic" data-zoom="./assets/cake-4.jpg" aria-label="Exemple choix de génoise"><img alt="Exemple choix de génoise" src="./assets/cake-4.jpg" /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="photos">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2>Photos</h2>
+            <p>Une galerie simple et cohérente (pas de mosaïque qui étouffe).</p>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <div class="bigPhoto" data-zoom="./assets/front.jpg">
+            <img alt="Façade fleurie" src="./assets/front.jpg" />
+          </div>
+          <div class="thumbs" aria-label="Vignettes photo">
+            <div class="thumb" data-zoom="./assets/hero-roses-neon.jpg"><img alt="Néon sur mur de roses" src="./assets/hero-roses-neon.jpg" /></div>
+            <div class="thumb" data-zoom="./assets/interior-posters.jpg"><img alt="Intérieur & affiches" src="./assets/interior-posters.jpg" /></div>
+            <div class="thumb" data-zoom="./assets/vintage-detail.jpg"><img alt="Détail décoratif" src="./assets/vintage-detail.jpg" /></div>
+            <div class="thumb" data-zoom="./assets/menu-photo.jpg"><img alt="Photo de menu" src="./assets/menu-photo.jpg" /></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="infos">
-      <div class="head">
-        <div>
-          <h2>Infos pratiques</h2>
-          <p>Adresse + accès. (Horaires : à récupérer/mettre à jour depuis Instagram.)</p>
-        </div>
-      </div>
-
-      <div class="info reveal">
-        <div class="left">
-          <ul class="kv">
-            <li>
-              <div class="ico">📍</div>
-              <div>
-                <b>Adresse</b>
-                <span>15 Bd Bonrepos, 31000 Toulouse</span>
-              </div>
-            </li>
-            <li>
-              <div class="ico">🚇</div>
-              <div>
-                <b>Accès</b>
-                <span>Proche Gare Matabiau • métro Marengo SNCF</span>
-              </div>
-            </li>
-            <li>
-              <div class="ico">⏰</div>
-              <div>
-                <b>Horaires</b>
-                <span>À afficher ici (valeurs à confirmer sur Instagram).</span>
-              </div>
-            </li>
-            <li>
-              <div class="ico">📲</div>
-              <div>
-                <b>Contact</b>
-                <span>DM Instagram : @lavillerosecafe</span>
-              </div>
-            </li>
-          </ul>
-
-          <div style="height:12px"></div>
-          <a class="btn primary" href="https://www.instagram.com/lavillerosecafe/" target="_blank" rel="noreferrer">
-            <span class="dot" aria-hidden="true"></span>Contacter / commander sur Instagram
-          </a>
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2>Infos & accès</h2>
+            <p>Carte embarquée + lien externe, pour éviter “Oops! Something went wrong”.</p>
+          </div>
         </div>
 
-        <div>
-          <iframe
-            title="Carte — La Ville Rose"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=15%20Bd%20Bonrepos%2C%2031000%20Toulouse&output=embed">
-          </iframe>
+        <div class="infoGrid">
+          <div class="infoCard">
+            <h3>Sur place</h3>
+            <ul>
+              <li>Salon de thé à Toulouse (secteur Gare Matabiau).</li>
+              <li>Brunch jusqu’à 15h (selon formule).</li>
+              <li>Thés du monde (tarif unique indiqué).</li>
+              <li>Commandes personnalisées : prévoir au moins 1 semaine.</li>
+            </ul>
+            <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=La+Ville+Rose+salon+de+th%C3%A9+Toulouse" target="_blank" rel="noreferrer"><span class="mini"></span> Ouvrir dans Google Maps</a>
+              <a class="btn" href="https://www.instagram.com/lavillerosecafe?igsh=eWJucXYzczlubms3" target="_blank" rel="noreferrer">Horaires (Instagram)</a>
+            </div>
+          </div>
+
+          <div class="map" aria-label="Carte Google Maps">
+            <!-- This embed is more reliable than “search” embeds -->
+            <iframe
+              title="Google Maps — La Ville Rose"
+              width="100%"
+              height="320"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=La%20Ville%20Rose%20salon%20de%20th%C3%A9%20Toulouse&z=15&output=embed">
+            </iframe>
+          </div>
         </div>
       </div>
     </section>
 
     <footer>
-      <div class="wrap" style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between">
-        <div>
-          <div style="font-family:var(--serif); font-size:18px;"><b>La Ville Rose</b></div>
-          <div style="margin-top:4px; color:rgba(29,15,23,.66)">Salon de thé — Toulouse</div>
-        </div>
-        <div style="max-width:66ch; text-align:right;">
-          Démo orientée “salon de thé” : posters, stories, rose, éditorial.  
-          (Sur prod : on remplace/complète avec les photos HD & horaires officiels.)
+      <div class="wrap">
+        <div class="foot">
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+              <div class="mark" aria-hidden="true" style="width:38px;height:38px;border-radius:14px">
+                <svg width="30" height="30" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 26h48" stroke="rgba(31,20,26,.75)" stroke-width="2.2" stroke-linecap="round"/>
+                  <path d="M16 26l16-10 16 10" stroke="rgba(31,20,26,.72)" stroke-width="2.2" stroke-linejoin="round"/>
+                  <path d="M8 50h48" stroke="rgba(31,20,26,.75)" stroke-width="2.2" stroke-linecap="round"/>
+                  <circle cx="32" cy="32" r="1.6" fill="rgba(255,63,155,.95)"/>
+                </svg>
+              </div>
+              <b style="font-family:'Libre Baskerville',serif;letter-spacing:.06em;text-transform:uppercase">LA VILLE ROSE</b>
+            </div>
+            <div>Salon de thé à Toulouse — rose, fleuri, rétro, gourmand.</div>
+          </div>
+          <a class="btn primary" href="https://www.instagram.com/lavillerosecafe?igsh=eWJucXYzczlubms3" target="_blank" rel="noreferrer"><span class="mini"></span> Instagram</a>
         </div>
       </div>
     </footer>
+  </main>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Agrandissement image">
+    <div class="frame">
+      <button type="button" id="lbClose" aria-label="Fermer">✕</button>
+      <img id="lbImg" alt="" src="" />
+    </div>
   </div>
-</main>
 
-<script>
-  // Reveal on scroll
-  const obs = new IntersectionObserver((entries)=>{
-    for(const en of entries){
-      if(en.isIntersecting) en.target.classList.add('on');
-    }
-  }, {threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  <script>
+    // Mobile nav
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+    burger?.addEventListener('click', () => {
+      const open = mobileNav.style.display !== 'none';
+      mobileNav.style.display = open ? 'none' : 'block';
+      burger.setAttribute('aria-label', open ? 'Ouvrir le menu' : 'Fermer le menu');
+    });
 
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click', (e)=>{
-      const id=a.getAttribute('href');
-      const el=document.querySelector(id);
+    // Smooth scroll (fix hero links)
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if(!a) return;
+      const id = a.getAttribute('href');
+      const el = document.querySelector(id);
       if(!el) return;
       e.preventDefault();
       el.scrollIntoView({behavior:'smooth', block:'start'});
+      mobileNav.style.display = 'none';
     });
-  });
-</script>
 
-<!-- =========================
-     IMAGES (intégrées base64)
-     ========================= -->
-<script>
-  // Inject data URIs in the template placeholders.
-  const ASSETS = {
-    LOGO_WEBP: "{{LOGO_WEBP}}",
-    FACADE_WEBP: "{{FACADE_WEBP}}",
-    WALL_NEON_WEBP: "{{WALL_NEON_WEBP}}",
-    LOGO_FLOWERS_WEBP: "{{LOGO_FLOWERS_WEBP}}",
-    PHONE_WEBP: "{{PHONE_WEBP}}",
-    COUNTER_WEBP: "{{COUNTER_WEBP}}",
-    MENU_BOISSONS_WEBP: "{{MENU_BOISSONS_WEBP}}",
-    MENU_THE_WEBP: "{{MENU_THE_WEBP}}",
-    STORY_INFO_WEBP: "{{STORY_INFO_WEBP}}",
-    STORY_STEPS_WEBP: "{{STORY_STEPS_WEBP}}",
-    STORY_NUMBERCAKE_WEBP: "{{STORY_NUMBERCAKE_WEBP}}",
-    STORY_BENTO_WEBP: "{{STORY_BENTO_WEBP}}",
-    STORY_DONUT_WEBP: "{{STORY_DONUT_WEBP}}",
-    STORY_GENOISE_WEBP: "{{STORY_GENOISE_WEBP}}"
-  };
+    // Tabs
+    const tabs = [...document.querySelectorAll('.tab')];
+    const panels = [...document.querySelectorAll('.panel')];
 
-  // Replace placeholders in the DOM
-  const html = document.documentElement.outerHTML;
-  let out = html;
-  for(const [k,v] of Object.entries(ASSETS)){
-    out = out.split(`{{${k}}}`).join(v);
-  }
-  document.open();
-  document.write(out);
-  document.close();
-</script>
+    function setTab(key){
+      tabs.forEach(t => {
+        const active = t.dataset.tab === key;
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
+        t.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach(p => p.classList.toggle('active', p.dataset.panel === key));
+      const q = document.getElementById('menuSearch');
+      if(q) q.value = '';
+      filterMenu('');
+    }
+
+    tabs.forEach(t => {
+      t.addEventListener('click', () => setTab(t.dataset.tab));
+      t.addEventListener('keydown', (ev) => {
+        const idx = tabs.indexOf(t);
+        if(ev.key === 'ArrowRight'){ tabs[(idx+1)%tabs.length].focus(); }
+        if(ev.key === 'ArrowLeft'){ tabs[(idx-1+tabs.length)%tabs.length].focus(); }
+        if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); setTab(t.dataset.tab); }
+      });
+    });
+
+    // Search
+    const search = document.getElementById('menuSearch');
+    const items = [...document.querySelectorAll('[data-item]')];
+    function norm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+    function filterMenu(query){
+      const q = norm(query);
+      items.forEach(it => {
+        const text = norm(it.innerText);
+        const show = !q || text.includes(q);
+        it.style.display = show ? '' : 'none';
+      });
+      document.querySelectorAll('[data-group]').forEach(g => {
+        const any = [...g.querySelectorAll('[data-item]')].some(x => x.style.display !== 'none');
+        g.style.display = any ? '' : 'none';
+      });
+    }
+    search?.addEventListener('input', () => filterMenu(search.value));
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+
+    function openLightbox(src, alt=''){
+      lbImg.src = src;
+      lbImg.alt = alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(){
+      lightbox.classList.remove('open');
+      lbImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('click', (e) => {
+      const zoom = e.target.closest('[data-zoom]');
+      if(zoom){
+        openLightbox(zoom.getAttribute('data-zoom'), zoom.getAttribute('aria-label') || 'Image');
+        return;
+      }
+      if(e.target.classList.contains('openDoc')){
+        openLightbox(e.target.dataset.src, e.target.dataset.title || 'Image');
+        return;
+      }
+    });
+    lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+    lbClose.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox(); });
+  </script>
+
+  <!--
+    Put these images in ./assets/ :
+      hero-roses-neon.jpg
+      interior-posters.jpg
+      vintage-detail.jpg
+      menu-photo.jpg
+      teas-photo.jpg
+      front.jpg
+      cake-1.jpg cake-2.jpg cake-3.jpg cake-4.jpg
+  -->
 </body>
 </html>
