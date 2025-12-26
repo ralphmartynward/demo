@@ -135,10 +135,11 @@
     .hero::after{
       content:"";
       position:absolute; inset:0;
+      /* Clear-cut overlay: keep gentle highlights, no fade-to-white at bottom */
       background:
-        radial-gradient(900px 520px at 18% 22%, rgba(255,255,255,.20), transparent 60%),
-        radial-gradient(900px 520px at 72% 18%, rgba(255,63,155,.18), transparent 65%),
-        linear-gradient(180deg, rgba(15,8,12,.70) 0%, rgba(15,8,12,.40) 46%, rgba(255,247,246,.92) 100%);
+        radial-gradient(900px 520px at 18% 22%, rgba(255,255,255,.18), transparent 60%),
+        radial-gradient(900px 520px at 72% 18%, rgba(255,63,155,.14), transparent 65%),
+        linear-gradient(180deg, rgba(15,8,12,.62) 0%, rgba(15,8,12,.34) 55%, rgba(15,8,12,.22) 100%);
       z-index:1;
       pointer-events:none;
     }
@@ -543,6 +544,43 @@
       .thumbs{grid-template-columns:1fr}
     }
   </style>
+
+<style>
+  /* Instagram-style grid (compact) */
+  .igGridShell{ position:relative; border-radius:28px; padding:14px; background:rgba(255,255,255,.55); box-shadow:0 18px 60px rgba(0,0,0,.08); overflow:hidden;}
+  .igGrid{ display:grid; grid-template-columns:repeat(5, 1fr); gap:12px; max-height:420px; }
+  @media (max-width: 980px){ .igGrid{ grid-template-columns:repeat(3, 1fr); max-height:520px; } }
+  @media (max-width: 520px){ .igGrid{ grid-template-columns:repeat(2, 1fr); max-height:540px; } }
+
+  .igTile{ position:relative; aspect-ratio:1/1; border-radius:18px; overflow:hidden; cursor:pointer; background:#f3f0f2; }
+  .igTile img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .igBadge{
+    position:absolute; top:10px; right:10px;
+    background:rgba(0,0,0,.55); color:white; font-size:12px;
+    padding:6px 8px; border-radius:999px; line-height:1; display:flex; gap:6px; align-items:center;
+    backdrop-filter: blur(10px);
+  }
+  .igBadge svg{ width:14px; height:14px; display:block; }
+  .igGridMsg{ padding:18px; font-size:14px; opacity:.85; }
+
+  /* Lightbox */
+  .lb{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:9999; padding:22px; }
+  .lb.isOpen{ display:flex; }
+  .lbBack{ position:absolute; inset:0; background:rgba(0,0,0,.55); backdrop-filter: blur(10px); }
+  .lbCard{
+    position:relative; width:min(980px, 100%); max-height:calc(100vh - 44px);
+    background:rgba(255,255,255,.92); border-radius:26px; overflow:hidden;
+    box-shadow:0 30px 120px rgba(0,0,0,.35);
+  }
+  .lbTop{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 14px 10px; border-bottom:1px solid rgba(0,0,0,.06); }
+  .lbTitle{ font-weight:700; font-size:14px; opacity:.85; }
+  .lbClose{ border:0; background:rgba(0,0,0,.06); border-radius:999px; padding:10px 12px; cursor:pointer; }
+  .lbMedia{ display:flex; align-items:center; justify-content:center; background:#111; }
+  .lbMedia img, .lbMedia video{ width:100%; height:auto; max-height:70vh; object-fit:contain; display:block; }
+  .lbCap{ padding:12px 14px 16px; font-size:14px; opacity:.85; display:flex; gap:12px; justify-content:space-between; align-items:flex-start; }
+  .lbCap a{ white-space:nowrap; }
+</style>
+
 </head>
 
 <body>
@@ -603,15 +641,7 @@
           Mur de roses + néon, affiches pastel pop derrière le comptoir.
           Brunch, desserts gourmands, boissons réconfort — et une vraie vibe “tea house”.
         </p>
-
-
-        <!-- Optional subtle shortcuts (not redundant big buttons) -->
-        <div class="subLinks" aria-label="Raccourcis">
-          <a href="#photos">Photos</a>
-          <a href="#commandes">Commandes</a>
-          <a href="https://www.instagram.com/lavillerosecafe?igsh=eWJucXYzczlubms3" target="_blank" rel="noreferrer">Instagram</a>
-        </div>
-      </div>
+</div>
     </div>
   </div>
 
@@ -826,28 +856,32 @@
       </div>
     </section>
 
-    <section id="photos" class="sectionA">
-      <div class="wrap">
-        <div class="sectionHead">
-          <div>
-            <h2>Photos</h2>
-            <p>Galerie cohérente (et facilement remplaçable par de “vraies” photos).</p>
-          </div>
-        </div>
-
-        <div class="gallery">
-          <div class="bigPhoto" data-zoom="./assets/front.jpg">
-            <img alt="Façade fleurie" src="./assets/front.jpg" />
-          </div>
-          <div class="thumbs" aria-label="Vignettes photo">
-            <div class="thumb" data-zoom="./assets/hero-roses-neon.jpg"><img alt="Néon sur mur de roses" src="./assets/hero-roses-neon.jpg" /></div>
-            <div class="thumb" data-zoom="./assets/interior-posters.jpg"><img alt="Intérieur & affiches" src="./assets/interior-posters.jpg" /></div>
-            <div class="thumb" data-zoom="./assets/vintage-detail.jpg"><img alt="Détail décoratif" src="./assets/vintage-detail.jpg" /></div>
-            <div class="thumb" data-zoom="./assets/menu-photo.jpg"><img alt="Photo de menu" src="./assets/menu-photo.jpg" /></div>
-          </div>
-        </div>
+    <section <section id="photos" class="sectionA">
+  <div class="wrap">
+    <div class="sectionHead" style="display:flex; align-items:flex-end; justify-content:space-between; gap:16px;">
+      <div>
+        <h2>Photos</h2>
+        <p>Aperçu du feed Instagram — même hauteur que la section, clic pour agrandir (photo/vidéo).</p>
       </div>
-    </section>
+      <a class="btn btnGhost" href="https://www.instagram.com/lavillerosecafe/" target="_blank" rel="noopener">Voir Instagram</a>
+    </div>
+
+    <div class="igGridShell" aria-label="Aperçu Instagram">
+      <div id="igGrid" class="igGrid" role="list"></div>
+      <div id="igGridMsg" class="igGridMsg" hidden>
+        Impossible de charger le feed automatiquement ici (limitations Instagram).<br/>
+        <a href="https://www.instagram.com/lavillerosecafe/" target="_blank" rel="noopener">Ouvrir Instagram</a>
+      </div>
+    </div>
+
+    <!--
+      IMPORTANT (tech):
+      Instagram ne permet pas de récupérer “le feed public” en JS pur côté navigateur (CORS / auth).
+      Cette grille attend un fichier JSON local (ig-feed.json) généré côté serveur (GitHub Action, Cloudflare Worker…).
+      Format attendu: [{ "type":"image|video", "thumb":"https://...", "src":"https://... (image ou mp4)", "permalink":"https://instagram.com/p/...", "caption":"..." }, ...]
+    -->
+  </div>
+</section>
 
     <section id="infos" class="sectionB">
       <div class="wrap">
@@ -870,7 +904,7 @@
 
             <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
               <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=La+Ville+Rose+salon+de+th%C3%A9+Toulouse" target="_blank" rel="noreferrer"><span class="mini"></span> Ouvrir dans Google Maps</a>
-              <a class="btn primary" href="https://www.instagram.com/lavillerosecafe?igsh=eWJucXYzczlubms3" target="_blank" rel="noreferrer"><span class="mini"></span> Instagram (horaires)</a>
+              <a class="btn" href="https://www.instagram.com/lavillerosecafe?igsh=eWJucXYzczlubms3" target="_blank" rel="noreferrer"><span class="mini"></span> Instagram (horaires)</a>
             </div>
           </div>
 
@@ -1023,5 +1057,118 @@
       front.jpg
       cake-1.jpg cake-2.jpg cake-3.jpg cake-4.jpg
   -->
+
+<!-- Lightbox -->
+<div id="lb" class="lb" aria-hidden="true">
+  <div class="lbBack" data-lb-close></div>
+  <div class="lbCard" role="dialog" aria-modal="true" aria-label="Agrandissement photo/vidéo">
+    <div class="lbTop">
+      <div class="lbTitle">La Ville Rose — Instagram</div>
+      <button class="lbClose" type="button" aria-label="Fermer" data-lb-close>✕</button>
+    </div>
+    <div id="lbMedia" class="lbMedia"></div>
+    <div class="lbCap">
+      <div id="lbCaption"></div>
+      <a id="lbPermalink" class="btn btnGhost" href="#" target="_blank" rel="noopener">Voir sur Instagram</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const grid = document.getElementById('igGrid');
+  const msg  = document.getElementById('igGridMsg');
+
+  const lb = document.getElementById('lb');
+  const lbMedia = document.getElementById('lbMedia');
+  const lbCaption = document.getElementById('lbCaption');
+  const lbPermalink = document.getElementById('lbPermalink');
+
+  const ICON_REEL = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7l10 5-10 5V7z" fill="white"/></svg>';
+
+  function openLightbox(item){
+    lb.classList.add('isOpen');
+    lb.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden';
+
+    lbMedia.innerHTML = '';
+    lbCaption.textContent = item.caption || '';
+    lbPermalink.href = item.permalink || 'https://www.instagram.com/lavillerosecafe/';
+
+    if(item.type === 'video' && item.src){
+      const v = document.createElement('video');
+      v.src = item.src;
+      v.controls = true;
+      v.playsInline = true;
+      v.autoplay = true;
+      lbMedia.appendChild(v);
+    } else if(item.src){
+      const img = document.createElement('img');
+      img.alt = item.caption ? item.caption.slice(0, 120) : 'Photo Instagram';
+      img.src = item.src;
+      lbMedia.appendChild(img);
+    } else {
+      // If we don't have a direct media URL, open Instagram instead
+      window.open(item.permalink || 'https://www.instagram.com/lavillerosecafe/', '_blank', 'noopener');
+      closeLightbox();
+    }
+  }
+
+  function closeLightbox(){
+    lb.classList.remove('isOpen');
+    lb.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = '';
+    // stop video if any
+    const v = lbMedia.querySelector('video');
+    if(v){ try{ v.pause(); v.src = ''; }catch(e){} }
+    lbMedia.innerHTML = '';
+  }
+
+  lb.addEventListener('click', (e)=>{
+    if(e.target && e.target.hasAttribute('data-lb-close')) closeLightbox();
+  });
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && lb.classList.contains('isOpen')) closeLightbox(); });
+
+  async function loadFeed(){
+    try{
+      const res = await fetch('ig-feed.json?cb=' + Date.now(), { cache: 'no-store' });
+      if(!res.ok) throw new Error('HTTP ' + res.status);
+      const items = await res.json();
+      if(!Array.isArray(items) || items.length === 0) throw new Error('Empty');
+      const maxItems = 10;
+      grid.innerHTML = '';
+      items.slice(0, maxItems).forEach((item)=>{
+        const tile = document.createElement('div');
+        tile.className = 'igTile';
+        tile.setAttribute('role','listitem');
+        const img = document.createElement('img');
+        img.loading = 'lazy';
+        img.alt = item.caption ? item.caption.slice(0, 80) : 'Instagram';
+        img.src = item.thumb || item.src;
+        tile.appendChild(img);
+
+        if(item.type === 'video'){
+          const badge = document.createElement('div');
+          badge.className = 'igBadge';
+          badge.innerHTML = ICON_REEL + '<span>Reel</span>';
+          tile.appendChild(badge);
+        }
+
+        tile.addEventListener('click', ()=> openLightbox(item));
+        grid.appendChild(tile);
+      });
+      msg.hidden = true;
+    }catch(err){
+      // If feed JSON isn't available, keep section compact and show fallback message
+      grid.innerHTML = '';
+      msg.hidden = false;
+      // console.debug(err);
+    }
+  }
+
+  loadFeed();
+})();
+</script>
+
 </body>
 </html>
