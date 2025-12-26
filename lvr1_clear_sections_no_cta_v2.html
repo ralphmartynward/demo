@@ -135,10 +135,11 @@
     .hero::after{
       content:"";
       position:absolute; inset:0;
+      /* Clear-cut overlay: keep gentle highlights, no fade-to-white at bottom */
       background:
-        radial-gradient(900px 520px at 18% 22%, rgba(255,255,255,.20), transparent 60%),
-        radial-gradient(900px 520px at 72% 18%, rgba(255,63,155,.18), transparent 65%),
-        linear-gradient(180deg, rgba(15,8,12,.70) 0%, rgba(15,8,12,.40) 46%, rgba(255,247,246,.92) 100%);
+        radial-gradient(900px 520px at 18% 22%, rgba(255,255,255,.18), transparent 60%),
+        radial-gradient(900px 520px at 72% 18%, rgba(255,63,155,.14), transparent 65%),
+        linear-gradient(180deg, rgba(15,8,12,.62) 0%, rgba(15,8,12,.34) 55%, rgba(15,8,12,.22) 100%);
       z-index:1;
       pointer-events:none;
     }
@@ -603,20 +604,7 @@
           Mur de roses + néon, affiches pastel pop derrière le comptoir.
           Brunch, desserts gourmands, boissons réconfort — et une vraie vibe “tea house”.
         </p>
-
-        <!-- Reduced CTAs: 1 primary + 1 secondary -->
-        <div class="ctaRow">
-          <a class="btn primary" href="#menu"><span class="mini"></span> Voir le menu</a>
-          <a class="btn" href="#infos">Nous trouver</a>
-        </div>
-
-        <!-- Optional subtle shortcuts (not redundant big buttons) -->
-        <div class="subLinks" aria-label="Raccourcis">
-          <a href="#photos">Photos</a>
-          <a href="#commandes">Commandes</a>
-          <a href="https://www.instagram.com/lavillerosecafe?igsh=eWJucXYzczlubms3" target="_blank" rel="noreferrer">Instagram</a>
-        </div>
-      </div>
+</div>
     </div>
   </div>
 
