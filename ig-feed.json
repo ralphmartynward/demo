@@ -1,0 +1,16 @@
+[
+  {
+    "type": "image",
+    "thumb": "https://…/thumbnail.jpg",
+    "src": "https://…/full.jpg",
+    "permalink": "https://www.instagram.com/p/XXXXXXXXX/",
+    "caption": "Brunch & fleurs 🌸"
+  },
+  {
+    "type": "video",
+    "thumb": "https://…/thumb.jpg",
+    "src": "https://…/video.mp4",
+    "permalink": "https://www.instagram.com/reel/YYYYYYYYY/",
+    "caption": "Le brunch le plus instagrammable…"
+  }
+]
